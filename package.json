@@ -1,0 +1,26 @@
+{
+  "name": "project-m",
+  "version": "1.0.0",
+  "description": "project-m",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "project-m"
+  },
+  "keywords": [
+    "project-m"
+  ],
+  "author": "Meghana",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.13.2"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
