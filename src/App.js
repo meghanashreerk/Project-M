@@ -1,26 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://t3.ftcdn.net/jpg/08/29/90/88/360_F_829908823_kYsRKdQcIaYEAhHRAZTIXuSKvuVPif8w.jpg"
-        ></img>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
+import Header from "./Components/Header";
+import resList from "./utils/mockdata";
+import { CDN_URL } from "./utils/constant";
 
 const stylecard = { backgroundColor: " white " }; //css as an object used for inline styling
 
@@ -30,10 +12,7 @@ const RestaurentCard = (props) => {
   return (
     <div className="res-card" style={stylecard}>
       <img
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
+        src={CDN_URL + cloudinaryImageId}
         className="res-logo"
         alt="res-logo"
       />
