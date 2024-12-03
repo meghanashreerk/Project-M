@@ -40,3 +40,21 @@ list-style-type: none;
     .search{
         padding: 10px;
     }
+    .filter-btn{
+        cursor: pointer;
+        margin: 10px;
+    }
+    .shimmer-cards{
+        width: 200px;
+        height: 400px;
+        background-color: lightgray;
+        margin: 20px;
+    }
+    .shimmer-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .login-btn{
+        padding: 0 20px;
+        cursor: pointer;
+    }

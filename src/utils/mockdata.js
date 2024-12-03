@@ -11,7 +11,7 @@ const resList = [
     id: 1,
     name: "Bookstore B",
     count: 3,
-    rating: 4.9,
+    rating: 3.9,
     location: "Uptown",
     cloudinaryImageId: "wa8ek94fp9d97ru1tcyn",
   },
@@ -19,7 +19,7 @@ const resList = [
     id: 2,
     name: "Restaurant C",
     count: 10,
-    rating: 4.5,
+    rating: 2.5,
     location: "City Center",
     cloudinaryImageId: "vkhcohhmqfczycw9vsar",
   },
@@ -40,5 +40,4 @@ const resList = [
     cloudinaryImageId: "2469fa88ee9b0b5d1366ba88f2a7fa7f",
   },
 ];
-
 export default resList;
