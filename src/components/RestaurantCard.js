@@ -4,7 +4,8 @@ const stylecard = { backgroundColor: " white " }; //css as an object used for in
 
 const RestaurentCard = (props) => {
   const { resData } = props;
-  const { name, cuisines, cloudinaryImageId, avgRating, areaName } = resData;
+  const { name, cuisines, cloudinaryImageId, avgRating, areaName } =
+    resData?.info;
   return (
     <div className="res-card" style={stylecard}>
       <img
