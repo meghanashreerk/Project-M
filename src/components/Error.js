@@ -6,6 +6,10 @@ const Error = () => {
   return (
     <div className="error">
       <h1>OOPS!! Something went wrong</h1>
+      <h3>
+        {err.status}
+        {err.statusText}
+      </h3>
     </div>
   );
 };

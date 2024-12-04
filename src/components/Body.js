@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import resList from "../utils/mockdata";
 import RestaurentCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { Link } from "react-router";
 const Body = (props) => {
   // state variable -- it is a powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -74,7 +74,12 @@ const Body = (props) => {
         {listOfRestaurants.map((restaurant) => (
           // you can also use index as key but it snot recommended, bad practice. But,
           // not using key <<< index <<< unique key (best practice).
-          <RestaurentCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurentCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
