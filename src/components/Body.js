@@ -3,6 +3,8 @@ import resList from "../utils/mockdata";
 import RestaurentCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = (props) => {
   // state variable -- it is a powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -33,6 +35,14 @@ const Body = (props) => {
   // if (listOfRestaurants.length === 0) {
   //   return <Shimmer />; //for shimmer UI
   // } or directly write it in return as below
+
+  // to show a message when the user is offline
+  const onlineStatus = useOnlineStatus();
+  console.log("online", onlineStatus);
+  if (onlineStatus == false)
+    return (
+      <h1>looks like you are offline, please check your internet connection</h1>
+    );
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
