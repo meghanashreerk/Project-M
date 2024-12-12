@@ -38,7 +38,6 @@ const Body = (props) => {
 
   // to show a message when the user is offline
   const onlineStatus = useOnlineStatus();
-  console.log("online", onlineStatus);
   if (onlineStatus == false)
     return (
       <h1>looks like you are offline, please check your internet connection</h1>
@@ -48,15 +47,16 @@ const Body = (props) => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4 ">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
           <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               const filteredRestaurants = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText)
@@ -67,20 +67,22 @@ const Body = (props) => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            // filter logic
-            const filteredList = listOfRestaurants.filter(
-              (res) => res.rating > 4
-            );
-            setListOfRestaurants(filteredList);
-          }}
-        >
-          Top rated restaurants
-        </button>{" "}
+        <div className="m-4 p-4 flex items-center">
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-xl"
+            onClick={() => {
+              // filter logic
+              const filteredList = listOfRestaurants.filter(
+                (res) => res.rating > 4
+              );
+              setListOfRestaurants(filteredList);
+            }}
+          >
+            Top rated restaurants
+          </button>{" "}
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {listOfRestaurants.map((restaurant) => (
           // you can also use index as key but it snot recommended, bad practice. But,
           // not using key <<< index <<< unique key (best practice).
