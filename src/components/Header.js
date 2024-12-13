@@ -30,7 +30,7 @@ const Header = () => {
           <li className="px-4">
             <Link to="/cart">Cart</Link>
           </li>
-          <li className="px-4">Online status: {onlineStatus ? "✅" : "🛑"}</li>
+          <li className="px-4">Online {onlineStatus ? "🟢" : "🔴"}</li>
 
           <button
             className="login-btn"
