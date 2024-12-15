@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import resList from "../utils/mockdata";
-import RestaurentCard from "./RestaurantCard";
+import RestaurentCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { update } from "@microsoft/sp-lodash-subset";
+import { rest } from "lodash";
 
 const Body = (props) => {
   // state variable -- it is a powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState([]);
+
+  const RestaurentCardPromoted = withPromotedLabel(RestaurentCard);
+
+  // whenever state variable updates, react triggers a reconciliation cycle (re-renders the comp)
 
   useEffect(() => {
     fetchData();
@@ -90,7 +96,12 @@ const Body = (props) => {
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurentCard resData={restaurant} />
+            {/* if the restaurant is promoted then add promoted label into it */}
+            {restaurant.info.promoted ? (
+              <RestaurentCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurentCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
