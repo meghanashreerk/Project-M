@@ -12,6 +12,8 @@ const RestaurantMenu = () => {
 
   const resInfo = useRestaurantMenu(resId); //useRestaurantMenu will be my custom hook to fetch data
 
+  const [showIndex, setShowIndex] = useState(null);
+
   // we can either call the api in the same component or write a custom hook as above to import the api
 
   // useEffect(() => {
@@ -52,13 +54,14 @@ const RestaurantMenu = () => {
         {cuisines.join(",")}-{costForTwoMessage}
       </p>
       {/* categories accordian */}
-      {categories.map((category) => {
-        console.log("hey", category?.card?.card);
+      {categories.map((category, index) => {
         return (
-          // <hi>fff</hi>
           <RestaurantCategory
+            // controlled component
             key={category?.card?.card?.title}
             data={category?.card?.card}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
           />
         );
       })}{" "}

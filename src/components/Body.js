@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import resList from "../utils/mockdata";
 import RestaurentCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { update } from "@microsoft/sp-lodash-subset";
-import { rest } from "lodash";
+import UserContext from "../utils/UserContext";
 
 const Body = (props) => {
   // state variable -- it is a powerful variable
@@ -49,6 +48,8 @@ const Body = (props) => {
       <h1>looks like you are offline, please check your internet connection</h1>
     );
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -86,6 +87,14 @@ const Body = (props) => {
           >
             Top rated restaurants
           </button>{" "}
+        </div>
+        <div className="m-4 p-4 flex items-center">
+          <label>Username: </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap">

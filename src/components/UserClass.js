@@ -1,5 +1,6 @@
 import React from "react";
 // or import { Component } from "react";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component {
   //  or write it as -- class UserClass extends Component {
@@ -41,6 +42,13 @@ class UserClass extends React.Component {
       <div className="user-card">
         <h2>{login}</h2>
         <img src={avatar_url}></img>
+        {/* using context api in class comp */}
+        <h3>
+          User:{" "}
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
+          </UserContext.Consumer>
+        </h3>
       </div>
     );
   }
