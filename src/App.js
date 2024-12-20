@@ -14,6 +14,9 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // import Grocery from "./components/Grocery";
 
 const AppLayout = () => {
@@ -31,12 +34,16 @@ const AppLayout = () => {
   return (
     // using UserContext.Provider, we are overriding the value coming from usercontext. If we wrap only the header,
     // only header comp gets updated. here we have updated the whole app
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
+
+    // to provided the store to our application, add it here in app.js
   );
 };
 
@@ -58,6 +65,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/contact",
