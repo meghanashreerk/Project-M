@@ -60,6 +60,7 @@ const Body = (props) => {
             type="text"
             className="border border-solid border-black"
             value={searchText}
+            data-testid="searchInput" //id for testing
             onChange={(e) => setSearchText(e.target.value)}
           ></input>
           <button
