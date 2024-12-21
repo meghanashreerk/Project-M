@@ -17,7 +17,7 @@ const cartSlice = createSlice({
       // logic is pop beacuse we are removing items to cart or here items is an array
     },
     clearCart: (state) => {
-      state.items.length = 0; // we cannot do state = []
+      state.items.length = 0; // we cannot do state = [], because immer will not allow, see notes to know what is immer
       //   this is because we want to clear the cart and set the array to zero
     },
   },
